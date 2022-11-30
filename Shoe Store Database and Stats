@@ -1,0 +1,20 @@
+
+-- Line 4 creates a table (Columns and their data type).
+
+CREATE TABLE shoe_shack (id INTEGER PRIMARY KEY, brand TEXT, size INTEGER, color TEXT, price INTEGER);
+
+-- Line 8 through 12 inserts values into the newly created table.
+
+INSERT INTO shoe_shack VALUES (1,"Jordans",8,"black",243.00);
+INSERT INTO shoe_shack VALUES (2,"Shaqs",10.5, "blue",54.99);
+INSERT INTO shoe_shack VALUES (3,"Jordans",11,"white & blue",435.00);
+INSERT INTO shoe_shack VALUES (4,"Jordans",6,"black",149.90);
+INSERT INTO shoe_shack VALUES (5,"The before Christ 600s",8,"brown",32.00);
+
+-- Line 16 selects the new table and orders the shoes by price.
+
+SELECT * From shoe_shack ORDER BY price;
+
+-- Line 20 selects the new table, shows only prices over 100, and orders the shoes by price.
+
+SELECT * FROM shoe_shack WHERE price > 100 ORDER BY price;
