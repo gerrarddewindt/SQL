@@ -1,0 +1,48 @@
+/* Created a table about the movie stars, films they are in and if they are married to each other */
+
+CREATE TABLE movie_stars (id INTEGER PRIMARY KEY, fullname TEXT, age INTEGER, num_movies INTEGER);
+
+INSERT INTO movie_stars (fullname, age, num_movies) VALUES ("Dwayne Johnson", 50, 51);
+INSERT INTO movie_stars (fullname, age, num_movies) VALUES ("Kevin Hear", 43, 51);
+INSERT INTO movie_stars (fullname, age, num_movies) VALUES ("Channing Tatum", 42, 51);
+INSERT INTO movie_stars (fullname, age, num_movies) VALUES ("Jenna Dewan", 42, 47);
+INSERT INTO movie_stars (fullname, age, num_movies) VALUES ("Angelina Jolie", 47, 51);
+INSERT INTO movie_stars (fullname, age, num_movies) VALUES ("Brad Pitt", 48, 51);
+INSERT INTO movie_stars (fullname, age, num_movies) VALUES ("Jack Black", 53, 51);
+
+
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY, title TEXT, year_released INTEGER, star_id INTEGER, star2_id INTEGER, star3_id INTEGER);
+
+INSERT INTO movies (title, year_released, star_id, star2_id, star3_id) VALUES ("Jumanji: The Next Level", 2019, 1, 2, 7);
+INSERT INTO movies (title, year_released, star_id, star2_id) VALUES ("Central Inteligence", 2016, 1, 2);
+INSERT INTO movies (title, year_released, star_id, star2_id) VALUES ("Step Up", 2003,3, 4);
+INSERT INTO movies (title, year_released, star_id, star2_id) VALUES ("Mr and Mrs Smith", 2003, 5, 6);
+INSERT INTO movies (title, year_released, star_id) VALUES ("Kong Fu Panda", 2008, 7);
+
+
+CREATE TABLE spouses (id INTEGER PRIMARY KEY, person1_id INTEGER, person2_id INTEGER);
+
+INSERT INTO spouses (person1_id, person2_id) VALUES (3,4);
+INSERT INTO spouses (person1_id, person2_id) VALUES (5,6);
+
+
+SELECT * FROM movie_stars;
+SELECT * FROM spouses;
+SELECT * FROM movies;
+
+
+SELECT star1.fullname, star1.age, spouse.fullname AS spouse_name, spouse.age AS spouse_age FROM spouses
+JOIN movie_stars star1
+ON spouses.person1_id = star1.id
+JOIN movie_stars spouse
+ON spouses.person2_id = spouse.id;
+
+SELECT movies.title, star1.fullname AS star1, star2.fullname AS star2, star3.fullname AS star3
+FROM movies
+LEFT OUTER JOIN movie_stars star1
+ON movies.star_id = star1.id
+LEFT OUTER JOIN movie_stars star2
+ON movies.star2_id = star2.id
+LEFT OUTER JOIN movie_stars star3
+ON movies.star3_id = star3.id;
