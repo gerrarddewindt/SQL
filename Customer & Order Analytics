@@ -54,6 +54,7 @@ WHERE location = '548 Lincoln St, Seattle, WA 98101';
 
 SELECT COUNT(distinct cust.acctnum) AS customers, avg(price * Quantity) AS averageSpent
 FROM BIT_DB.FebSales feb
+
 INNER JOIN BIT_DB.customers cust
 ON feb.orderID = cust.order_id
 WHERE feb.Quantity > 2
